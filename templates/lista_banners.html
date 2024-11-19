@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Gerenciar Banners</h1>
+<a href="{% url 'adicionar_banner' %}" class="btn btn-success mb-3">Adicionar Novo Banner</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Imagem</th>
+            <th>Texto Principal</th>
+            <th>Texto Secundário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for banner in banners %}
+    <tr>
+        <td>{{ banner.id }}</td>
+        <td><img src="{{ banner.imagem.url }}" alt="Banner" width="100"></td>
+        <td>{{ banner.texto_principal }}</td>
+        <td>{{ banner.texto_secundario }}</td>
+        <td>
+            <a href="{% url 'editar_banner' banner.id %}" class="btn btn-sm btn-primary">Editar</a>
+            <form action="{% url 'excluir_banner' banner.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}

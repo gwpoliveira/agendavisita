@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Painel de Controle{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4 text-primary" style="font-weight: bold;">Painel de Controle</h1>
+    <p class="text-center text-muted mb-5">Bem-vindo ao painel de gerenciamento. Aqui você pode acessar e administrar as principais seções do site.</p>
+
+    <div class="row text-center">
+
+        <!-- Link para Gerenciar Banners -->
+        <div class="col-md-3 my-3 d-flex align-items-stretch">
+            <a href="{% url 'lista_banners' %}" class="card h-100 shadow-sm text-decoration-none">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="fas fa-images fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title text-dark">Gerenciar Banners</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Link para Gerenciar Seções de Ensino -->
+        <div class="col-md-3 my-3 d-flex align-items-stretch">
+            <a href="{% url 'lista_secoes' %}" class="card h-100 shadow-sm text-decoration-none">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title text-dark">Gerenciar Seções de Ensino</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Link para Gerenciar Projetos -->
+        <div class="col-md-3 my-3 d-flex align-items-stretch">
+            <a href="{% url 'lista_projetos' %}" class="card h-100 shadow-sm text-decoration-none">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="fas fa-project-diagram fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title text-dark">Gerenciar Projetos</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Link para Gerenciar Agendamentos -->
+        <div class="col-md-3 my-3 d-flex align-items-stretch">
+            <a href="{% url 'lista_agendamentos' %}" class="card h-100 shadow-sm text-decoration-none">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                    <i class="fas fa-calendar-alt fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title text-dark">Gerenciar Agendamentos</h5>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

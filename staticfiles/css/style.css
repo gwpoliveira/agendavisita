@@ -1,0 +1,353 @@
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Corpo e Tipografia */
+body, html {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    color: #134889;
+}
+
+/* Navbar Fixa e Transparente */
+.navbar {
+    background-color: transparent !important;
+    padding: 1rem 1.5rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(245, 172, 29, 0.9) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #f5ac1d !important;
+}
+
+.navbar .nav-link.active {
+    color: #f5ac1d !important;
+    border-bottom: 2px solid #f5ac1d;
+}
+
+/* Banner Fullscreen */
+.banner-full {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner-full img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-title {
+    font-size: 3em;
+    margin: 0.5em 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.banner-description {
+    font-size: 1.4em;
+    max-width: 800px;
+    color: #e0e0e0;
+}
+
+/* Seção de Ensino */
+.secao-ensino {
+    padding: 60px 20px;
+    background-color: #f1f5fa;
+}
+
+.secao-ensino h2 {
+    font-size: 2.5em;
+    color: #134889;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.secao-ensino h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.secao-ensino p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.7;
+}
+
+.secao-ensino img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Carrossel de Projetos */
+.carousel-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.carousel-track {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card {
+    flex: 0 0 25%; /* Ajusta para 4 cards visíveis */
+    max-width: 300px;
+    padding: 15px;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+
+/* Seção de Visita */
+.visita-section {
+    background-image: url('{% static "img/fundo.png" %}');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    color: white;
+    position: relative;
+}
+
+.visita-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 128, 0.7); /* Overlay com cor azul escura */
+    z-index: 1;
+}
+
+.visita-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.visita-form-container {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #000;
+}
+
+.visita-form-container h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.visita-form-container .form-group {
+    margin-bottom: 20px;
+}
+
+.visita-form-container .form-control {
+    background-color: rgba(255, 255, 255, 1); /* Fundo branco */
+    border: 1px solid #ccc; /* Bordas consistentes */
+    color: #495057; /* Cor do texto */
+    border-radius: 5px; /* Arredondamento das bordas */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho da fonte consistente */
+    margin-bottom: 15px; /* Espaçamento entre os campos */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Animação suave */
+}
+
+.visita-form-container .form-control::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.visita-form-container .form-control:focus {
+    background-color: rgba(255, 255, 255, 1); /* Fundo branco */
+    border-color: #f5ac1d; /* Cor da borda ao focar */
+    box-shadow: 0 0 8px rgba(245, 172, 29, 0.4); /* Efeito de foco */
+    outline: none; /* Remove o outline padrão */
+}
+
+/* Labels */
+.visita-form-container label {
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #ffffff; /* Cor branca para os rótulos */
+    margin-bottom: 5px; /* Espaçamento abaixo do rótulo */
+    display: block; /* Garante que o rótulo fique acima do campo */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
+}
+
+.visita-form-container .btn-warning {
+    background-color: #f5ac1d;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.visita-form-container .btn-warning:hover {
+    background-color: #e0961b;
+}
+
+.visita-form-container .btn-warning:focus {
+    box-shadow: 0 0 10px rgba(245, 172, 29, 0.5);
+}
+
+/* Responsividade para a seção de visita */
+@media (max-width: 768px) {
+    .visita-form-container {
+        padding: 20px;
+    }
+
+    .visita-form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .visita-form-container .form-control {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* Seção Final */
+.final-section {
+    background-color: #ffffff; /* Azul do logo */
+    color: white;
+    text-align: center;
+}
+
+.logo-final {
+    max-width: 200px;
+    margin: auto;
+}
+
+.telefones-final {
+    max-width: 300px;
+    margin: auto;
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #0e3a61; /* Azul escuro */
+    padding: 10px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: #f5ac1d; /* Amarelo do logo */
+}
+
+.social-icon i {
+    display: inline-block;
+}
+
+
+/* Footer */
+.footer {
+    padding: 25px 0;
+    background-color: #134889;
+    color: #fff;
+    text-align: center;
+    font-size: 0.95em;
+}
+

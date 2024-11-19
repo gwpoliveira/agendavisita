@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <h2>Confirmar Exclusão</h2>
+    <p>Tem certeza de que deseja excluir a seção "{{ secao.titulo }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim, excluir</button>
+        <a href="{% url 'lista_secoes' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

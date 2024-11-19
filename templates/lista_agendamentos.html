@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Gerenciar Agendamentos{% endblock %}
+{% block content %}
+
+<div class="container my-4">
+    <h1 class="text-center">Gerenciar Agendamentos</h1>
+    <a href="{% url 'adicionar_agendamento' %}" class="btn btn-success mb-3">Adicionar Novo Agendamento</a>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Unidade</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{ agendamento.nome }}</td>
+                <td>{{ agendamento.email }}</td>
+                <td>{{ agendamento.telefone }}</td>
+                <td>{{ agendamento.data|date:"d/m/Y" }}</td>
+                <td>{{ agendamento.hora|time:"H:i" }}</td>
+                <td>{{ agendamento.unidade }}</td>
+                <td>{{ agendamento.status }}</td>
+                <td>
+                    <a href="{% url 'editar_agendamento' agendamento.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="{% url 'excluir_agendamento' agendamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="text-center">Nenhum agendamento encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

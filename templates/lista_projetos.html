@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Gerenciar Projetos{% endblock %}
+{% block content %}
+
+<div class="container my-4">
+    <h1 class="text-center">Gerenciar Projetos</h1>
+    <a href="{% url 'adicionar_projeto' %}" class="btn btn-success mb-3">Adicionar Novo Projeto</a>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Imagem</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for projeto in projetos %}
+            <tr>
+                <td>
+                    {% if projeto.imagem %}
+                        <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" width="100">
+                    {% else %}
+                        <p>Sem imagem</p>
+                    {% endif %}
+                </td>
+                <td>{{ projeto.titulo }}</td>
+                <td>{{ projeto.descricao|truncatewords:20 }}</td>
+                <td>
+                    <a href="{% url 'editar_projeto' projeto.pk %}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <a href="{% url 'excluir_projeto' projeto.pk %}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i> Excluir
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

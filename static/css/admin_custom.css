@@ -1,0 +1,6 @@
+/* CSS para ajustar o tamanho da logo no painel administrativo */
+.navbar-brand img {
+    width: 50px !important; /* Ajuste o tamanho conforme necessário */
+    max-height: 30px !important;
+    object-fit: contain;
+}

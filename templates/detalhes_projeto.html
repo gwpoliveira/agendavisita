@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container my-5">
+        <h2>{{ projeto.titulo }}</h2>
+        <p>{{ projeto.descricao }}</p>
+        {% if projeto.imagem %}
+            <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" class="img-fluid">
+        {% endif %}
+        <a href="{% url 'lista_projetos' %}" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
+{% endblock %}

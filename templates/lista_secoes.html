@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Gerenciar Seções de Ensino</h1>
+<a href="{% url 'adicionar_secao' %}" class="btn btn-success mb-3">Adicionar Nova Seção</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Imagem</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for secao in secoes %}
+        <tr>
+            <td>{{ secao.titulo }}</td>
+            <td>{{ secao.descricao|truncatewords:20 }}</td>
+            <td><img src="{{ secao.imagem.url }}" width="100"></td>
+            <td>
+                <a href="{% url 'editar_secao' secao.pk %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'excluir_secao' secao.pk %}" class="btn btn-danger">Excluir</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

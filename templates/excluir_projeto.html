@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h3>Confirmar Exclusão</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p>Você tem certeza que deseja excluir o projeto <strong>{{ projeto.titulo }}</strong>?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                        <a href="{% url 'lista_projetos' %}" class="btn btn-secondary">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
