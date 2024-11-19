@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-n83h(#wek5h7zd&b%dtqp4!ddc=1kln)6gf6c%-3yy*(#04s5_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '216.39.249.92','agendavisita.grupomagister.online']
 
 # Application definition
 INSTALLED_APPS = [
