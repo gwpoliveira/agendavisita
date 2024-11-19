@@ -5,65 +5,67 @@
 {% block title %}Início - Instituto Magister{% endblock %}
 
 {% block content %}
-<!-- Banner -->
-<section class="container-fluid">
-    {% if banner.imagem %}
-        <img src="{{ banner.imagem.url }}" alt="Banner" style='width: 100%'>
-    {% endif %}
-    <div class="banner-content">
-        {% if banner.texto_principal %}
-            <h1 class="banner-title">{{ banner.texto_principal }}</h1>
+    <!-- Banner -->
+    <section class="container-fluid">
+        {% if banner.imagem %}
+            <img src="{{ banner.imagem.url }}" alt="Banner" style='width: 100%'>
         {% endif %}
-        {% if banner.texto_secundario %}
-            <p class="banner-description">{{ banner.texto_secundario }}</p>
-        {% endif %}
-    </div>
-</section>
-
-<!-- Seção Ensino -->
-<section class="secao-ensino my-5">
-    <h2 class="text-center mb-4">Nossos Ensinos</h2>
-    <div class="container">
-        <div class="row">
-            {% for secao in secoes_ensino %}
-                {% if forloop.counter|divisibleby:2 %}
-                    <!-- Imagem à direita e texto à esquerda para itens pares -->
-                    <div class="col-md-6 d-flex align-items-center">
-                        <div>
-                            <h3>{{ secao.titulo }}</h3>
-                            <p>{{ secao.descricao }}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        {% if secao.imagem %}
-                            <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
-                        {% else %}
-                            <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão" class="img-fluid rounded">
-                        {% endif %}
-                    </div>
-                {% else %}
-                    <!-- Imagem à esquerda e texto à direita para itens ímpares -->
-                    <div class="col-md-6">
-                        {% if secao.imagem %}
-                            <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
-                        {% else %}
-                            <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão" class="img-fluid rounded">
-                        {% endif %}
-                    </div>
-                    <div class="col-md-6 d-flex align-items-center">
-                        <div>
-                            <h3>{{ secao.titulo }}</h3>
-                            <p>{{ secao.descricao }}</p>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
+        <div class="banner-content">
+            {% if banner.texto_principal %}
+                <h1 class="banner-title">{{ banner.texto_principal }}</h1>
+            {% endif %}
+            {% if banner.texto_secundario %}
+                <p class="banner-description">{{ banner.texto_secundario }}</p>
+            {% endif %}
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Projetos - Carrossel Dinâmico em Cards -->
-<section class="projetos my-5">
+    <!-- Seção Ensino -->
+    <section class="secao-ensino my-5">
+        <h2 class="text-center mb-4">Nossos Ensinos</h2>
+        <div class="container">
+            <div class="row">
+                {% for secao in secoes_ensino %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <!-- Imagem à direita e texto à esquerda para itens pares -->
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h3>{{ secao.titulo }}</h3>
+                                <p>{{ secao.descricao }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            {% if secao.imagem %}
+                                <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
+                            {% else %}
+                                <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão"
+                                     class="img-fluid rounded">
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <!-- Imagem à esquerda e texto à direita para itens ímpares -->
+                        <div class="col-md-6">
+                            {% if secao.imagem %}
+                                <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
+                            {% else %}
+                                <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão"
+                                     class="img-fluid rounded">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h3>{{ secao.titulo }}</h3>
+                                <p>{{ secao.descricao }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos - Carrossel Dinâmico em Cards -->
+    <section class="projetos my-5">
     <h2 class="text-center mb-4">Projetos Educacionais</h2>
     <div id="projetosCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -72,23 +74,27 @@
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
                         <div class="row">
                 {% endif %}
-                            <div class="col-md-3">
-                                <div class="card shadow-lg h-100">
-                                    {% if projeto.imagem %}
-                                        <img src="{{ projeto.imagem.url }}" class="card-img-top" alt="{{ projeto.titulo }}">
-                                    {% else %}
-                                        <img src="{% static 'img/default-projeto.png' %}" class="card-img-top" alt="Imagem Padrão">
-                                    {% endif %}
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ projeto.titulo }}</h5>
-                                        <p class="card-text">{{ projeto.descricao|truncatewords:20 }}</p>
-                                    </div>
-                                    <div class="card-footer text-center">
-                                        <a href="{% url 'detalhes_projeto' projeto.id %}" class="btn btn-primary">Saiba Mais</a>
+                                <div class="col-md-3">
+                                    <div class="card shadow-lg h-100">
+                                        {% if projeto.imagem %}
+                                            <img src="{{ projeto.imagem.url }}" class="card-img-top" alt="{{ projeto.titulo }}">
+                                        {% else %}
+                                            <img src="{% static 'img/default-projeto.png' %}" class="card-img-top" alt="Imagem Padrão">
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ projeto.titulo }}</h5>
+                                            <p class="card-text">{{ projeto.descricao|truncatewords:20 }}</p>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <a href="{% url 'detalhes_projeto' projeto.id %}" class="btn btn-primary">Saiba Mais</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                 {% if forloop.counter|divisibleby:4 or forloop.last %}
+                        {% for i in 4|add:"-forloop.counter|modulo:4" %}
+                            <!-- Adicionar espaços vazios se necessário para completar a linha -->
+                            <div class="col-md-3"></div>
+                        {% endfor %}
                         </div> <!-- Fechar a row -->
                     </div> <!-- Fechar o item do carrossel -->
                 {% endif %}
@@ -107,89 +113,88 @@
     </div>
 </section>
 
-<!-- Seção de Visita com o Formulário de Agendamento -->
-<section class="visita-section my-5" style="background-image: url('{% static 'img/fundo.png' %}'); background-size: cover; background-position: center; padding: 80px 0;">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Coluna Esquerda com o Formulário de Agendamento -->
-            <div class="col-md-6">
-                <div class="visita-form-container p-4 rounded bg-dark" style="opacity: 0.9;">
-                    <h2 class="text-white mb-4">Atendimento presencial só é realizado mediante agendamento</h2>
-                    <form method="post" novalidate>
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="nome" class="text-white">Nome Completo:</label>
-                            {{ form.nome|add_class:"form-control" }}
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="text-white">Email:</label>
-                            {{ form.email|add_class:"form-control" }}
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone" class="text-white">Telefone:</label>
-                            {{ form.telefone|add_class:"form-control" }}
-                        </div>
-                        <div class="form-group">
-                            <label for="unidade" class="text-white">Unidade:</label>
-                            {{ form.unidade|add_class:"form-control" }}
-                        </div>
-                        <div class="form-group">
-                            <label for="data" class="text-white">Data:</label>
-                            {{ form.data|add_class:"form-control" }}
-                        </div>
-                        <div class="form-group">
-                            <label for="hora" class="text-white">Hora:</label>
-                            {{ form.hora|add_class:"form-control" }}
-                        </div>
-                        <button type="submit" class="btn btn-warning btn-block">Agendar Visita</button>
-                    </form>
 
 
+    <!-- Seção de Visita com o Formulário de Agendamento -->
+    <section class="visita-section my-5" style="background-image: url('{% static 'img/fundo.png' %}'); background-size: cover; background-position: center; padding: 80px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Coluna Esquerda com o Formulário de Agendamento -->
+                <div class="col-md-6">
+                    <div class="visita-form-container p-4 rounded bg-dark" style="opacity: 0.9;">
+                        <h2 class="text-white mb-4">Atendimento presencial só é realizado mediante agendamento</h2>
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="nome" class="text-white">Nome Completo:</label>
+                                {{ form.nome|add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="text-white">Email:</label>
+                                {{ form.email|add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone" class="text-white">Telefone:</label>
+                                {{ form.telefone|add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label for="unidade" class="text-white">Unidade:</label>
+                                {{ form.unidade|add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label for="data" class="text-white">Data:</label>
+                                {{ form.data|add_class:"form-control" }}
+                            </div>
+                            <div class="form-group">
+                                <label for="hora" class="text-white">Hora:</label>
+                                {{ form.hora|add_class:"form-control" }}
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-block">Agendar Visita</button>
+                        </form>
+                    </div>
                 </div>
+                <!-- Coluna Direita para manter o layout simétrico -->
+                <div class="col-md-6"></div>
             </div>
-            <!-- Coluna Direita para manter o layout simétrico -->
-            <div class="col-md-6"></div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Seção Final -->
-<section class="final-section py-5">
-    <div class="container text-center">
-        <!-- Logo -->
-        <div class="mb-4">
-            <img src="{% static 'img/logo2.png' %}" alt="Logo" class="img-fluid logo-final" style="width: 30rem">
+    <!-- Seção Final -->
+    <section class="final-section py-5">
+        <div class="container text-center">
+            <!-- Logo -->
+            <div class="mb-4">
+                <img src="{% static 'img/logo2.png' %}" alt="Logo" class="img-fluid logo-final" style="width: 30rem">
+            </div>
+
+            <!-- Telefones -->
+            <div class="mb-4">
+                <img src="{% static 'img/telefones.png' %}" alt="Telefones" class="img-fluid telefones-final"
+                     style="width: 20rem">
+            </div>
+
+            <!-- Ícones de Redes Sociais -->
+            <div class="social-icons">
+                <a href="https://www.instagram.com/institutomagister/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/MagisterdeEnsino?locale=pt_BR" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.youtube.com/@InstitutoMagisterdeEnsino" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://wa.me/8621072202" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://maps.app.goo.gl/BVQDgycaSBQBiYvNA" target="_blank" class="social-icon">
+                    <i class="fas fa-map-marker-alt"></i> <span class="sr-only">Unidade Primavera</span>
+                </a>
+                <a href="https://maps.app.goo.gl/Q8NH33P7tfTrkKVE7" target="_blank" class="social-icon">
+                    <i class="fas fa-map-marker-alt"></i> <span class="sr-only">Unidade Bela Vista</span>
+                </a>
+            </div>
         </div>
-
-        <!-- Telefones -->
-        <div class="mb-4">
-            <img src="{% static 'img/telefones.png' %}" alt="Telefones" class="img-fluid telefones-final" style="width: 20rem">
-        </div>
-
-        <!-- Ícones de Redes Sociais -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/institutomagister/" target="_blank" class="social-icon">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/MagisterdeEnsino?locale=pt_BR" target="_blank" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.youtube.com/@InstitutoMagisterdeEnsino" target="_blank" class="social-icon">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://wa.me/8621072202" target="_blank" class="social-icon">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://maps.app.goo.gl/BVQDgycaSBQBiYvNA" target="_blank" class="social-icon">
-                <i class="fas fa-map-marker-alt"></i> <span class="sr-only">Unidade Primavera</span>
-            </a>
-            <a href="https://maps.app.goo.gl/Q8NH33P7tfTrkKVE7" target="_blank" class="social-icon">
-                <i class="fas fa-map-marker-alt"></i> <span class="sr-only">Unidade Bela Vista</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-
+    </section>
 
 {% endblock %}
