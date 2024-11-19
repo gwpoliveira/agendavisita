@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 
 class Banner(models.Model):
     texto_principal = models.CharField(max_length=200, blank=True, null=True)
-    texto_secundario = models.CharField(max_length=200, default='')  # Define um valor padrão aqui
+    texto_secundario = models.CharField(max_length=200, blank=True, null=True)  # Define um valor padrão aqui
     imagem = models.ImageField(upload_to='banners/', blank=True, null=True)
 
     def __str__(self):

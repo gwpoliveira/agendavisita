@@ -15,7 +15,14 @@
         {% for banner in banners %}
     <tr>
         <td>{{ banner.id }}</td>
-        <td><img src="{{ banner.imagem.url }}" alt="Banner" width="100"></td>
+        <<td>
+            {% if banner.imagem %}
+                <img src="{{ banner.imagem.url }}" alt="Banner" width="100">
+            {% else %}
+                Sem imagem
+            {% endif %}
+        </td>
+
         <td>{{ banner.texto_principal }}</td>
         <td>{{ banner.texto_secundario }}</td>
         <td>
