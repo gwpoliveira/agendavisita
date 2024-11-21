@@ -294,8 +294,20 @@ h1, h2, h3 {
     .visita-form-container .form-control {
         font-size: 0.9rem;
     }
-}
 
+     .secao-ensino img {
+        margin-bottom: 15px;
+    }
+
+    .secao-ensino h3 {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .secao-ensino p {
+        text-align: justify;
+    }
+}
 
 
 /* Seção Final */

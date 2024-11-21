@@ -21,102 +21,86 @@
     </section>
 
     <!-- Seção Ensino -->
-    <section class="secao-ensino my-5">
-        <h2 class="text-center mb-4">Nosso Ensino</h2>
-        <div class="container">
-            <div class="row">
-                {% for secao in secoes_ensino %}
-                    {% if forloop.counter|divisibleby:2 %}
-                        <!-- Imagem à direita e texto à esquerda para itens pares -->
-                        <div class="col-md-6 d-flex align-items-center">
-                            <div>
-                                <h3>{{ secao.titulo }}</h3>
-                                <p>{{ secao.descricao }}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            {% if secao.imagem %}
-                                <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
-                            {% else %}
-                                <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão"
-                                     class="img-fluid rounded">
-                            {% endif %}
-                        </div>
+<section class="secao-ensino my-5">
+    <h2 class="text-center mb-4">Nosso Ensino</h2>
+    <div class="container">
+        <div class="row">
+            {% for secao in secoes_ensino %}
+                <div class="col-md-6 col-12">
+                    {% if secao.imagem %}
+                        <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
                     {% else %}
-                        <!-- Imagem à esquerda e texto à direita para itens ímpares -->
-                        <div class="col-md-6">
-                            {% if secao.imagem %}
-                                <img src="{{ secao.imagem.url }}" alt="{{ secao.titulo }}" class="img-fluid rounded">
-                            {% else %}
-                                <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão"
-                                     class="img-fluid rounded">
-                            {% endif %}
-                        </div>
-                        <div class="col-md-6 d-flex align-items-center">
-                            <div>
-                                <h3>{{ secao.titulo }}</h3>
-                                <p>{{ secao.descricao }}</p>
-                            </div>
-                        </div>
+                        <img src="{% static 'img/default-secao.png' %}" alt="Imagem Padrão" class="img-fluid rounded">
                     {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- Projetos - Carrossel Dinâmico em Cards -->
-    <section class="projetos my-5">
-    <h2 class="text-center mb-4">Projetos Educacionais</h2>
-    <div id="projetosCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            {% for projeto in projetos %}
-                {% if forloop.counter0|divisibleby:4 %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <div class="row">
-                {% endif %}
-                                <div class="col-md-3">
-                                    <div class="card shadow-lg h-100">
-                                        {% if projeto.imagem %}
-                                            <img src="{{ projeto.imagem.url }}" class="card-img-top" alt="{{ projeto.titulo }}">
-                                        {% else %}
-                                            <img src="{% static 'img/default-projeto.png' %}" class="card-img-top" alt="Imagem Padrão">
-                                        {% endif %}
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ projeto.titulo }}</h5>
-                                            <p class="card-text">{{ projeto.descricao|truncatewords:20 }}</p>
-                                        </div>
-                                        <div class="card-footer text-center">
-                                            <a href="{% url 'detalhes_projeto' projeto.id %}" class="btn btn-primary">Saiba Mais</a>
-                                        </div>
-                                    </div>
-                                </div>
-                {% if forloop.counter|divisibleby:4 or forloop.last %}
-                        {% for i in 4|add:"-forloop.counter|modulo:4" %}
-                            <!-- Adicionar espaços vazios se necessário para completar a linha -->
-                            <div class="col-md-3"></div>
-                        {% endfor %}
-                        </div> <!-- Fechar a row -->
-                    </div> <!-- Fechar o item do carrossel -->
-                {% endif %}
+                </div>
+                <div class="col-md-6 col-12 d-flex align-items-center">
+                    <div>
+                        <h3>{{ secao.titulo }}</h3>
+                        <p>{{ secao.descricao }}</p>
+                    </div>
+                </div>
             {% endfor %}
         </div>
-
-        <!-- Setas de navegação -->
-        <a class="carousel-control-prev" href="#projetosCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#projetosCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Próximo</span>
-        </a>
     </div>
 </section>
 
 
 
+
+    <!-- Projetos - Carrossel Dinâmico em Cards -->
+    <section class="projetos my-5">
+        <h2 class="text-center mb-4">Projetos Educacionais</h2>
+        <div id="projetosCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for projeto in projetos %}
+                    {% if forloop.counter0|divisibleby:4 %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="row">
+                    {% endif %}
+                <div class="col-md-3">
+                    <div class="card shadow-lg h-100">
+                        {% if projeto.imagem %}
+                            <img src="{{ projeto.imagem.url }}" class="card-img-top" alt="{{ projeto.titulo }}">
+                        {% else %}
+                            <img src="{% static 'img/default-projeto.png' %}" class="card-img-top" alt="Imagem Padrão">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ projeto.titulo }}</h5>
+                            <p class="card-text">{{ projeto.descricao|truncatewords:20 }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{% url 'detalhes_projeto' projeto.id %}" class="btn btn-primary">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 or forloop.last %}
+                    {% for i in 4|add:"-forloop.counter|modulo:4" %}
+                        <!-- Adicionar espaços vazios se necessário para completar a linha -->
+                        <div class="col-md-3"></div>
+                    {% endfor %}
+                    </div> <!-- Fechar a row -->
+                    </div> <!-- Fechar o item do carrossel -->
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Setas de navegação -->
+            <a class="carousel-control-prev" href="#projetosCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#projetosCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>
+    </section>
+
+
+
     <!-- Seção de Visita com o Formulário de Agendamento -->
-    <section class="visita-section my-5" style="background-image: url('{% static 'img/fundo.png' %}'); background-size: cover; background-position: center; padding: 80px 0;">
+    <section class="visita-section my-5"
+             style="background-image: url('{% static 'img/fundo.png' %}'); background-size: cover; background-position: center; padding: 80px 0;">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Coluna Esquerda com o Formulário de Agendamento -->
