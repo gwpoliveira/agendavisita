@@ -6,6 +6,6 @@
         {% if projeto.imagem %}
             <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" class="img-fluid">
         {% endif %}
-        <a href="{% url 'lista_projetos' %}" class="btn btn-secondary mt-3">Voltar</a>
+        <a href="{% url 'landing_page' %}" class="btn btn-secondary mt-3">Voltar</a>
     </div>
 {% endblock %}
