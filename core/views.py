@@ -124,7 +124,7 @@ def excluir_secao(request, pk):
 def lista_projetos(request):
     projetos = Projeto.objects.all()
     return render(request, 'lista_projetos.html', {'projetos': projetos})
-@staff_member_required
+
 def detalhes_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
     return render(request, 'detalhes_projeto.html', {'projeto': projeto})
