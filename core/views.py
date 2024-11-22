@@ -51,10 +51,11 @@ def agendamento_sucesso(request):
     return render(request, 'agendamento_sucesso.html')
 
 # Views para Banners
+@staff_member_required
 def lista_banners(request):
     banners = Banner.objects.all()
     return render(request, 'lista_banners.html', {'banners': banners})
-
+@staff_member_required
 def adicionar_banner(request):
     if request.method == 'POST':
         form = BannerForm(request.POST, request.FILES)
@@ -64,7 +65,7 @@ def adicionar_banner(request):
     else:
         form = BannerForm()
     return render(request, 'form_banner.html', {'form': form, 'titulo': 'Adicionar Banner'})
-
+@staff_member_required
 def editar_banner(request, pk):
     banner = get_object_or_404(Banner, pk=pk)
     if request.method == 'POST':
@@ -75,7 +76,7 @@ def editar_banner(request, pk):
     else:
         form = BannerForm(instance=banner)
     return render(request, 'form_banner.html', {'form': form, 'titulo': 'Editar Banner'})
-
+@staff_member_required
 def excluir_banner(request, pk):
     banner = get_object_or_404(Banner, pk=pk)
     if request.method == 'POST':
@@ -84,10 +85,11 @@ def excluir_banner(request, pk):
     return render(request, 'banners/confirmar_exclusao.html', {'banner': banner})
 
 # Views para Seções de Ensino
+@staff_member_required
 def lista_secoes(request):
     secoes = SecaoEnsino.objects.all()
     return render(request, 'lista_secoes.html', {'secoes': secoes})
-
+@staff_member_required
 def adicionar_secao(request):
     if request.method == 'POST':
         form = SecaoEnsinoForm(request.POST, request.FILES)
@@ -97,7 +99,7 @@ def adicionar_secao(request):
     else:
         form = SecaoEnsinoForm()
     return render(request, 'form_secao.html', {'form': form, 'titulo': 'Adicionar Seção'})
-
+@staff_member_required
 def editar_secao(request, pk):
     secao = get_object_or_404(SecaoEnsino, pk=pk)
     if request.method == 'POST':
@@ -108,7 +110,7 @@ def editar_secao(request, pk):
     else:
         form = SecaoEnsinoForm(instance=secao)
     return render(request, 'form_secao.html', {'form': form, 'titulo': 'Editar Seção'})
-
+@staff_member_required
 def excluir_secao(request, pk):
     secao = get_object_or_404(SecaoEnsino, pk=pk)
     if request.method == 'POST':
@@ -118,14 +120,15 @@ def excluir_secao(request, pk):
 
 
 # Views para Projetos
+@staff_member_required
 def lista_projetos(request):
     projetos = Projeto.objects.all()
     return render(request, 'lista_projetos.html', {'projetos': projetos})
-
+@staff_member_required
 def detalhes_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
     return render(request, 'detalhes_projeto.html', {'projeto': projeto})
-
+@staff_member_required
 def adicionar_projeto(request):
     if request.method == 'POST':
         form = ProjetoForm(request.POST, request.FILES)
@@ -135,7 +138,7 @@ def adicionar_projeto(request):
     else:
         form = ProjetoForm()
     return render(request, 'form_projeto.html', {'form': form, 'titulo': 'Adicionar Projeto'})
-
+@staff_member_required
 def editar_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
     if request.method == 'POST':
@@ -146,7 +149,7 @@ def editar_projeto(request, pk):
     else:
         form = ProjetoForm(instance=projeto)
     return render(request, 'form_projeto.html', {'form': form, 'titulo': 'Editar Projeto'})
-
+@staff_member_required
 def excluir_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
     if request.method == 'POST':
@@ -155,10 +158,11 @@ def excluir_projeto(request, pk):
     return render(request, 'excluir_projeto.html', {'projeto': projeto})
 
 # Views para Agendamentos
+@staff_member_required
 def lista_agendamentos(request):
     agendamentos = Agendamento.objects.all()
     return render(request, 'lista_agendamentos.html', {'agendamentos': agendamentos})
-
+@staff_member_required
 def adicionar_agendamento(request):
     if request.method == 'POST':
         form = AgendamentoForm(request.POST)
@@ -179,7 +183,7 @@ def agendar_visita(request):
         form = AgendamentoForm()
     return render(request, 'nome_do_template.html', {'form': form})
 
-
+@staff_member_required
 def editar_agendamento(request, pk):
     agendamento = get_object_or_404(Agendamento, pk=pk)
     if request.method == 'POST':
@@ -190,7 +194,7 @@ def editar_agendamento(request, pk):
     else:
         form = AgendamentoForm(instance=agendamento)
     return render(request, 'editar_agendamento.html', {'form': form})
-
+@staff_member_required
 def excluir_agendamento(request, pk):
     agendamento = get_object_or_404(Agendamento, pk=pk)
     if request.method == 'POST':
