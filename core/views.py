@@ -120,7 +120,7 @@ def excluir_secao(request, pk):
 
 
 # Views para Projetos
-@staff_member_required
+
 def lista_projetos(request):
     projetos = Projeto.objects.all()
     return render(request, 'lista_projetos.html', {'projetos': projetos})
